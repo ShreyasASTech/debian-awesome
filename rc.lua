@@ -72,16 +72,19 @@ awful.screen.connect_for_each_screen(function(s)                                
     --Separators                                                                                                              --+
     s.myseparator1 = wibox.widget.separator { forced_width = 2, opacity = 0.0 } -- invisible sep                              --+
     s.myseparator2 = wibox.widget.separator { forced_width = 1, color = "#666666" } -- visible sep                            --+
+    s.myseparator3 = wibox.widget.separator { forced_width = 7, opacity = 0.0 } -- thick invisible sep                        --+
                                                                                                                               --+
     -- Volume in Wibar                                                                                                        --+
-    s.myvolicon = wibox.widget {text = " ♪ :", widget = wibox.widget.textbox}                                                  --+
+    s.myvolicon = wibox.widget {text = " ♪ :", widget = wibox.widget.textbox}                                                 --+
     volumecfg = volume_control {device="pulse", font = "sans 9", step = '2%', lclick = "toggle", rclick = "pavucontrol", widget_text = {on = '% 3d%% ', off = ' M '}}
                                                                                                                               --+
+    s.mymemicon = wibox.widget {text = "  MEM :", widget = wibox.widget.textbox}                                              --+
+    s.memory = awful.widget.watch('bash -c "free -h | grep Mem | cut -c 27,28,29,30,31"', 2)                                  --+
     -- Add widgets to the wibox                                                                                               --+
     s.mywibox:setup { layout = wibox.layout.align.horizontal,                                                                 --+
         { layout = wibox.layout.fixed.horizontal, s.mylayoutbox, s.myseparator1, s.mytaglist, s.myseparator1, s.myseparator2 }, -- Left Wigdets
         s.mytasklist, -- Middle widget                                                                                        --+
-        { layout = wibox.layout.fixed.horizontal, s.myseparator2, s.myseparator1, s.myvolicon, s.myseparator1, volumecfg.widget, s.myseparator1, s.myseparator2, s.myseparator1, mytextclock } -- Right Widgets
+        { layout = wibox.layout.fixed.horizontal, s.myseparator2, s.mymemicon, s.memory, s.myseparator3, s.myseparator2, s.myseparator1, s.myvolicon, s.myseparator1, volumecfg.widget, s.myseparator1, s.myseparator2, s.myseparator1, mytextclock } -- Right Widgets
     }                                                                                                                         --+
 end)                                                                                                                          --+
 --------------------------------------------------------------------------------------------------------------------------------+
