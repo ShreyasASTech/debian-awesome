@@ -78,8 +78,10 @@ awful.screen.connect_for_each_screen(function(s)                                
     s.myvolicon = wibox.widget {text = " ♪ :", widget = wibox.widget.textbox}                                                 --+
     volumecfg = volume_control {device="pulse", font = "sans 9", step = '2%', lclick = "toggle", rclick = "pavucontrol", widget_text = {on = '% 3d%% ', off = ' M '}}
                                                                                                                               --+
+    -- Memory Status in Wibar                                                                                                 --+                                                                                                                          
     s.mymemicon = wibox.widget {text = "  MEM :", widget = wibox.widget.textbox}                                              --+
     s.memory = awful.widget.watch('bash -c "free -h | grep Mem | cut -c 27,28,29,30,31"', 2)                                  --+
+                                                                                                                              --+
     -- Add widgets to the wibox                                                                                               --+
     s.mywibox:setup { layout = wibox.layout.align.horizontal,                                                                 --+
         { layout = wibox.layout.fixed.horizontal, s.mylayoutbox, s.myseparator1, s.mytaglist, s.myseparator1, s.myseparator2 }, -- Left Wigdets
@@ -124,14 +126,18 @@ globalkeys = gears.table.join(                                                  
     awful.key({ modkey, "Shift" }, "q",      awesome.quit),                                                                            --+
     awful.key({ modkey, "Shift" }, "r",      function ()  awful.util.spawn("sudo reboot")   end),                                      --+
     awful.key({ modkey, "Shift" }, "s",      function ()  awful.util.spawn("sudo poweroff") end),                                      --+
-
-    awful.key({                 }, "KP_Add",      function() volumecfg:up() end),
-    awful.key({                 }, "KP_Subtract", function() volumecfg:down() end),
-    awful.key({                 }, "KP_Enter",    function() volumecfg:toggle() end),
-                                                                                                                                           --+
+                                                                                                                                       --+
+    -- Volume Controls                                                                                                                 --+
+    awful.key({                 }, "KP_Add",      function() volumecfg:up() end),                                                      --+
+    awful.key({                 }, "KP_Subtract", function() volumecfg:down() end),                                                    --+
+    awful.key({                 }, "KP_Enter",    function() volumecfg:toggle() end),                                                  --+
+                                                                                                                                       --+
+    -- Take a screenshot                                                                                                               --+
+    awful.key({                 }, "Print",  function() awful.util.spawn("bash -c '~/.config/screencapture/screenshooter.sh'") end),        --+
+                                                                                                                                       --+
     -- Scratchpad                                                                                                                      --+
-    awful.key({ modkey          }, "Next",  function () local screen = awful.screen.focused() local tag = screen.tags[7] if tag then awful.tag.viewtoggle(tag) end end),
-    awful.key({ modkey          }, "Prior", function () if client.focus then local tag = client.focus.screen.tags[7] if tag then client.focus:move_to_tag(tag) end end end)
+    awful.key({ modkey          }, "Next",   function () local screen = awful.screen.focused() local tag = screen.tags[7] if tag then awful.tag.viewtoggle(tag) end end),
+    awful.key({ modkey          }, "Prior",  function () if client.focus then local tag = client.focus.screen.tags[7] if tag then client.focus:move_to_tag(tag) end end end)
                                                                                                                                        --+
 )                                                                                                                                      --+
                                                                                                                                        --+
