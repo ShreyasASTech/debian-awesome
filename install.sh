@@ -13,7 +13,7 @@ builddir=$(pwd)
 # Updating system & installing programs
 echo ""; echo "Doing a system update & Installing the required programs..."
 apt update && apt upgrade -y
-apt install acpid fonts-powerline x11-utils x11-xserver-utils curl imagemagick pulseaudio pavucontrol lightdm slick-greeter xfce4-terminal wget nitrogen dmenu xserver-xorg-video-intel xserver-xorg-input-libinput picom -y
+apt install awesome acpid fonts-powerline x11-utils x11-xserver-utils curl imagemagick pulseaudio pavucontrol lightdm slick-greeter xfce4-terminal wget nitrogen dmenu xserver-xorg-video-intel xserver-xorg-input-libinput picom -y
 
 # Change the current working directory
 cd "$builddir" || exit
