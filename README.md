@@ -10,7 +10,7 @@ Installer script for fully functional awesome window manager build on debian
 |:--:| 
 | *This install script only* |
 
-| ![awesome-with-customisation.png]() | 
+| ![awesome-customised.png](https://github.com/shreyasastech/debian-awesome/assets/137637016/80d0fb61-f547-422a-a812-453f51cc5ca0) | 
 |:--:| 
 | *This install script + My [debian customisation script](https://github.com/shreyasastech/debian-customisation)* |
 
