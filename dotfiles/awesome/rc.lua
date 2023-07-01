@@ -17,9 +17,10 @@ local volume_control = require("volume-control") --+
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme.lua")
 
--- Define Modkey & Default Terminal
-terminal = "xfce4-terminal"
-modkey   = "Mod4"
+-- Define Modkey, Default Terminal & Default Browser
+modkey     = "Mod4"
+myTerminal = "xfce4-terminal --dynamic-title-mode=before --hide-toolbar --hide-menubar --hide-scrollbar"
+myBrowser  = "any-browser"
 
 -- Layouts -------------------------+
 awful.layout.layouts = {          --+
@@ -98,10 +99,10 @@ globalkeys = gears.table.join(                                                  
     awful.key({ modkey          }, "p",      function ()  awful.util.spawn("dmenu_run -i -p 'run:' -sb '#1D7C3A' -sf '#FFFFFF'") end), --+
                                                                                                                                        --+
     -- Lunch terminal                                                                                                                  --+
-    awful.key({ modkey          }, "Return", function () awful.spawn(terminal) end),                                                   --+
+    awful.key({ modkey          }, "Return", function () awful.spawn(myTerminal) end),                                                   --+
                                                                                                                                        --+
     -- Launch Browser                                                                                                                  --+
-    awful.key({ modkey          }, "b",      function ()  awful.util.spawn("librewolf") end),                                          --+
+    awful.key({ modkey          }, "b",      function ()  awful.spawn(myBrowser) end),                                          --+
                                                                                                                                        --+
     -- Change focus to another window                                                                                                  --+
     awful.key({ modkey          }, "Right",  function () awful.client.focus.byidx( 1) end),                                            --+
@@ -237,4 +238,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell("nitrogen --restore")                           --+
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf -b") --+
 awful.spawn.with_shell("lxpolkit")                                     --+
+awful.spawn.with_shell("bash ~/wall-set.sh")                           --+
 -------------------------------------------------------------------------+
