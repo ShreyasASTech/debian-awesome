@@ -13,24 +13,27 @@ builddir=$(pwd)
 # Updating system & installing programs
 echo ""; echo "Doing a system update & Installing the required programs..."
 apt update && apt upgrade -y
-apt install fonts-powerline x11-utils x11-xserver-utils curl imagemagick pulseaudio pavucontrol i3 i3status lightdm slick-greeter xfce4-terminal stterm wget nitrogen python3-pip dmenu fonts-font-awesome xserver-xorg-video-intel xserver-xorg-input-libinput picom -y
+apt install acpid fonts-powerline x11-utils x11-xserver-utils curl imagemagick pulseaudio pavucontrol lightdm slick-greeter xfce4-terminal wget nitrogen dmenu xserver-xorg-video-intel xserver-xorg-input-libinput picom -y
 
 # Change the current working directory
 cd "$builddir" || exit
 
 # Creating necessary directories
 echo ""; echo "Making necessary directories..."
-mkdir -p /etc/lightdm/
+mkdir -p /home/"$username"/.config/awesome/
+mkdir -p /home/"$username"/.config/screencapture/
 mkdir -p /home/"$username"/.config/picom/
 mkdir -p /home/"$username"/Screenshots/
 
 # Copy config files
 echo ""; echo "Copying config files..."
-cp dotfiles/picom.conf /home/"$username"/.config/picom/ # Picom Compositor config file
+cp dotfiles/awesome/* /home/"$username"/.config/awesome/ # awesome configs
+cp dotfiles/picom/picom.conf /home/"$username"/.config/picom/ # Picom Compositor config file
+cp scripts/screenshooter.sh /home/"$username"/.config/screencapture/ # A bash script to take screenshot and save with timestamp
 chown -R "$username":"$username" /home/"$username" #otherwise you need sudo privileges whenever you want to change some of these files
 
-# i3 tweaks
-. ./scripts/reboot-poweroff.sh # For configuring reboot-poweroff commands in i3 config
+# Some tweaks
+./scripts/reboot-poweroff.sh # For configuring reboot-poweroff commands to work without password
 
 # Done
 echo "Installation is now complete. Reboot your system for the changes to take place.
