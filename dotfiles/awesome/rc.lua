@@ -238,5 +238,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell("nitrogen --restore")                           --+
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf -b") --+
 awful.spawn.with_shell("lxpolkit")                                     --+
+awful.spawn.with_shell("light-locker")                                 --+
 awful.spawn.with_shell("bash ~/wall-set.sh")                           --+
 -------------------------------------------------------------------------+
