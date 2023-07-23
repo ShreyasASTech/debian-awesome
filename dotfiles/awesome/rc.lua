@@ -134,7 +134,10 @@ globalkeys = gears.table.join(                                                  
     awful.key({                 }, "KP_Enter",    function() volumecfg:toggle() end),                                                  --+
                                                                                                                                        --+
     -- Take a screenshot                                                                                                               --+
-    awful.key({                 }, "Print",  function() awful.util.spawn("bash -c '~/.config/screencapture/screenshooter.sh'") end),        --+
+    awful.key({                 }, "Print",  function() awful.util.spawn("bash -c '~/.config/screencapture/screenshooter.sh'") end),   --+
+                                                                                                                                       --+
+    -- Kill process by speciifying name                                                                                                --+
+    awful.key({ modkey          }, "k",  function() awful.util.spawn("bash -c '~/.config/dkill.sh'") end),                             --+
                                                                                                                                        --+
     -- Scratchpad                                                                                                                      --+
     awful.key({ modkey          }, "Next",   function () local screen = awful.screen.focused() local tag = screen.tags[7] if tag then awful.tag.viewtoggle(tag) end end),
