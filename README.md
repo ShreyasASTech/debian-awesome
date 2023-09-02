@@ -22,12 +22,12 @@ Installer script for fully functional awesome window manager build on debian
 Execute install.sh as sudo from a terminal:
 
 ```bash
- git clone https://github.com/shreyasastech/debian-awesome.git
+ git clone https://github.com/shreyas-a-s/debian-awesome.git
  cd debian-awesome/
  sudo /.install.sh
 ```
 
 For those who would like a single-line command:
 ```bash
- git clone https://github.com/shreyasastech/debian-awesome.git && cd debian-awesome/ && sudo ./install.sh
+ git clone https://github.com/shreyas-a-s/debian-awesome.git && cd debian-awesome/ && sudo ./install.sh
 ```
